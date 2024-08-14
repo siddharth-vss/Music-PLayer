@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
+import type { PropsWithChildren } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -16,86 +16,102 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+// import {Home, Start,Details} from './screens';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {Artists,Favorites,Playlists,Songs} from './src/app/screens';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+const Tab = createBottomTabNavigator();
+
+
 
 function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Tab.Navigator
+        initialRouteName="Start"
+        screenOptions={{ headerShown: false }}
+      >
+        {/* <Tab.Screen name="favorites" options={{
+        title : "Favorites",
+        tabBarIcon :({color})=><FontAwesome name="heart" size={20} color={color} />
+      }} />
+      <Tab.Screen name="playlists" options={{
+        title : "Playlists",
+        tabBarIcon :({color})=><MaterialCommunityIcons name="playlist-play" size={28} color={color} />
+      }}/>
+      <Tab.Screen name="songs" options={{
+        title : "Songs",
+        tabBarIcon :({color})=><Ionicons name="musical-notes-sharp" size={24} color={color} />
+      }}/>
+      <Tab.Screen name="artists" options={{
+        title : "Artists",
+        tabBarIcon :({color})=><FontAwesome6 name="users-line" size={24} color={color} />
+      }}/> */}
+        <Tab.Screen name="Favorites" options={{
+          title : "Favorites",
+          tabBarIcon :({color})=><Ionicons name="heart-sharp" size={20} color={color} />
+        }} component={Favorites} />
+        <Tab.Screen name="Playlists"
+        options={{
+          title : "Playlists",
+          tabBarIcon :({color})=><MaterialCommunityIcons name="playlist-play" size={28} color={color} />
+        }}
+         component={Playlists} />
+        <Tab.Screen name="Songs"
+        options={{
+          title : "Songs",
+          tabBarIcon :({color})=><Ionicons name="musical-notes-sharp" size={24} color={color} />
+        }}
+         component={Songs} />
+        <Tab.Screen name="Artists" 
+        options={{
+          title : "Artists",
+          tabBarIcon :({color})=><FontAwesome6 name="users-line" size={24} color={color} />
+        }}
+         component={Artists} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
-
+function Home() {
+  return (
+    <>
+      <View>
+        <Text>Home Screen</Text>
+      </View>
+    </>
+  )
+}
+function Start() {
+  return (
+    <>
+      <View>
+        <Text>Start Screen</Text>
+      </View>
+    </>
+  )
+}
+function Details() {
+  return (
+    <>
+      <View>
+        <Text>Details Screen</Text>
+      </View>
+    </>
+  )
+}
 const styles = StyleSheet.create({
   sectionContainer: {
     marginTop: 32,
