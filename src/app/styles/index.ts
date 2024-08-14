@@ -1,4 +1,4 @@
-import { colors, fontSize } from '@/constants/tokens'
+import { colors, fontSize } from '../constants/tokens'
 import { StyleSheet } from 'react-native'
 
 export const defaultStyles = StyleSheet.create({
@@ -7,8 +7,9 @@ export const defaultStyles = StyleSheet.create({
 		backgroundColor: colors.background,
 	},
 	text: {
-		fontSize: fontSize.base,
+		fontSize: fontSize.lg,
 		color: colors.text,
+		fontWeight : 500,
 	},
 })
 
