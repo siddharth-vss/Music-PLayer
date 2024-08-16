@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import type { PropsWithChildren } from 'react';
 import {
   SafeAreaView,
@@ -18,6 +18,7 @@ import {
 } from 'react-native';
 // import {Home, Start,Details} from './screens';
 import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Artists, Favorites, Playlists, Songs } from './src/app/screens';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -25,94 +26,107 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { colors, fontSize } from './src/app/constants/tokens';
+import Player from './src/app/screens/Player';
+import { FloatingPlayer } from './src/app/components/FloatingPlayer';
+import TrackPlayer from 'react-native-track-player';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 
 
 function App(): React.JSX.Element {
+  useEffect(() => {
+    async function setup() {
+      await TrackPlayer.setupPlayer();
+      await TrackPlayer.add([{
+        id: 1,
+        url: 'https://audio.jukehost.co.uk/QYX00qYT6PljL6KYyzKGzYPmc3Mhx6gm',
+        title: 'Mood feat iann dior - 24kGoldn',
+        artist: 'Artist 1',
+        artwork: 'https://i.scdn.co/image/ab67616d00001e0284c53fa832dfa265192419c5',
+        // album: 'Album 1',
+        // duration: 3600000, // 3600 seconds = 1 hour
+      }])
+      // await TrackPlayer.play();
+    }
+    setup();
+  }, [])
 
 
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={{
-          headerShown: false,
-          
-          tabBarActiveTintColor: colors.primary,
-          tabBarLabelStyle: {
-            fontSize: fontSize.xs,
-            fontWeight: '600',
-          },
-          tabBarStyle: {
-            position: 'absolute',
-            backgroundColor : '#0f0f0f',
-            height :60,
-            borderTopLeftRadius: 20,
-            borderTopRightRadius: 20,
-            borderTopWidth: 0.2,
-            // borderColor : "#FFF",
-            paddingTop: 8,
-          },
-
-        }}
-
-
-        initialRouteName="Songs"
-      >
-        <Tab.Screen name="Favorites"
-        options={{
-          title: "Favorites",
-          tabBarIcon: ({ color }) => (<FontAwesome name="heart" size={20} color={color} />),
-        }} component={Favorites} />
-        <Tab.Screen name="Playlists"
-          options={{
-            title: "Playlists",
-            tabBarIcon: ({ color }) => (<MaterialCommunityIcons name="playlist-play" size={28} color={color} />),
-          }}
-          component={Playlists} />
-        <Tab.Screen name="Songs"
-          options={{
-            title: "Songs",
-            tabBarIcon: ({ color }) => (<Ionicons name="musical-notes-sharp" size={24} color={color} />),
-          }}
-          component={Songs} />
-        <Tab.Screen name="Artists"
-          options={{
-            title: "Artists",
-            tabBarIcon: ({ color }) => (<FontAwesome6 name="users-line" size={24} color={color} />),
-          }}
-          component={Artists} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name='Main' component={Component} options={{ headerShown: false }} />
+          <Stack.Screen name='Player' component={Player} options={{ headerShown: false }} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }
-function Home() {
-  // screenOptions={{
+const Component = () => (<>
+  <Tab.Navigator
+    screenOptions={{
+      headerShown: false,
+
+      tabBarActiveTintColor: colors.primary,
+      tabBarLabelStyle: {
+        fontSize: fontSize.xs,
+        fontWeight: '600',
+      },
+      tabBarStyle: {
+        position: 'absolute',
+        backgroundColor: '#0f0f0f',
+        height: 60,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        borderTopWidth: 0.2,
+        // borderColor : "#FFF",
+        paddingTop: 8,
+      },
+
+    }}
 
 
+    initialRouteName="Songs_Main"
+  >
+    <Tab.Screen name="Favorites_Main"
+      options={{
+        title: "Favorites",
+        tabBarIcon: ({ color }) => (<FontAwesome name="heart" size={20} color={color} />),
+      }} component={Favorites} />
+    <Tab.Screen name="Playlists_Main"
+      options={{
+        title: "Playlists",
+        tabBarIcon: ({ color }) => (<MaterialCommunityIcons name="playlist-play" size={28} color={color} />),
+      }}
+      component={Playlists} />
+    <Tab.Screen name="Songs_Main"
+      options={{
+        title: "Songs",
+        tabBarIcon: ({ color }) => (<Ionicons name="musical-notes-sharp" size={24} color={color} />),
+      }}
+      component={Songs} />
+    <Tab.Screen name="Artists_Main"
+      options={{
+        title: "Artists",
+        tabBarIcon: ({ color }) => (<FontAwesome6 name="users-line" size={24} color={color} />),
+      }}
+      component={Artists} />
+  </Tab.Navigator>
+  <FloatingPlayer
+    style={{
+      position: 'absolute',
+      left: 8,
+      right: 8,
+      bottom: 78,
+    }}
+  />
+</>
+)
 
-  //   tabBarBackground : ()=>(
-  //     <BlurView
-  //       intensity={95}
-  //       style={{
-  //         ...StyleSheet.absoluteFillObject,
-  //         overflow: 'hidden',
-  //         backgroundColor : '#00000099',
-  //         borderTopLeftRadius: 20,
-  //         borderTopRightRadius: 20,
-  //       }}
-  //     />
-  //   ),
-  // }}
-  return (
-    <>
-      <View>
-        <Text>Home Screen</Text>
-      </View>
-    </>
-  )
-}
 
 const styles = StyleSheet.create({
   sectionContainer: {
