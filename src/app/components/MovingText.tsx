@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Text } from 'react-native'
 import Animated, {
 	Easing,
 	StyleProps,

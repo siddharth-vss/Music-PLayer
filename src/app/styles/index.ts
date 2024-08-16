@@ -9,7 +9,6 @@ export const defaultStyles = StyleSheet.create({
 	text: {
 		fontSize: fontSize.lg,
 		color: colors.text,
-		fontWeight : 500,
 	},
 })
 

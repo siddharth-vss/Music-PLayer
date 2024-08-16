@@ -1,4 +1,4 @@
-import { colors } from '@/constants/tokens'
+import { colors } from '../constants/tokens'
 import { useEffect, useState } from 'react'
 import { getColors } from 'react-native-image-colors'
 import { AndroidImageColors, IOSImageColors } from 'react-native-image-colors/build/types'
@@ -13,7 +13,7 @@ export const usePlayerBackground = (imageUrl: string) => {
 			cache: true,
 			key: imageUrl,
 		}).then((colors) => setImageColors(colors as AndroidImageColors))
-		console.log('hii',imageUrl);
+		console.log('sp',imageUrl);
 	}, [imageUrl])
 
 	return { ImageColors }

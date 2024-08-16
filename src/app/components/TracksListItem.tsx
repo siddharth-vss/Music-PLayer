@@ -1,9 +1,10 @@
-import { TrackShortcutsMenu } from '@/components/TrackShortcutsMenu'
-import { StopPropagation } from '@/components/utils/StopPropagation'
-import { unknownTrackImageUri } from '@/constants/images'
-import { colors, fontSize } from '@/constants/tokens'
-import { defaultStyles } from '@/styles'
-import { Entypo, Ionicons } from '@expo/vector-icons'
+import { TrackShortcutsMenu } from '../components/TrackShortcutsMenu'
+import { StopPropagation } from '../components/utils/StopPropagation'
+import { unknownTrackImageUri } from '../constants/images'
+import { colors, fontSize } from '../constants/tokens'
+import { defaultStyles } from '../styles'
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import Entypo from 'react-native-vector-icons/Entypo';
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
 // import LoaderKit from 'react-native-loader-kit'

@@ -1,6 +1,6 @@
-import { colors } from '@/constants/tokens'
-import { defaultStyles } from '@/styles'
-import { Ionicons } from '@expo/vector-icons'
+import { colors } from '../constants/tokens'
+import { defaultStyles } from '../styles'
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StyleSheet, Text, TouchableOpacity, View, ViewProps } from 'react-native'
 // import { TouchableOpacity } from 'react-native-gesture-handler'
 import TrackPlayer, { Track } from 'react-native-track-player'

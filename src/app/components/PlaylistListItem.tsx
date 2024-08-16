@@ -1,7 +1,7 @@
-import { colors } from '@/constants/tokens'
-import { Playlist } from '@/helpers/types'
-import { defaultStyles } from '@/styles'
-import { AntDesign } from '@expo/vector-icons'
+import { colors } from '../constants/tokens'
+import { Playlist } from '../helpers/types'
+import { defaultStyles } from '../styles'
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import { StyleSheet, Text, TouchableHighlight, TouchableHighlightProps, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
 

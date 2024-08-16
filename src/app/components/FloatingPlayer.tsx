@@ -1,15 +1,16 @@
-import { PlayPauseButton, SkipToNextButton } from '@/components/PlayerControls'
-import { unknownTrackImageUri } from '@/constants/images'
-import { useLastActiveTrack } from '@/hooks/useLastActiveTrack'
-import { defaultStyles } from '@/styles'
-import { useRouter } from 'expo-router'
+import { PlayPauseButton, SkipToNextButton } from '../components/PlayerControls'
+import { unknownTrackImageUri } from '../constants/images'
+import { useLastActiveTrack } from '../hooks/useLastActiveTrack'
+import { defaultStyles } from '../styles'
 import { StyleSheet, TouchableOpacity, View, ViewProps } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import { useActiveTrack } from 'react-native-track-player'
 import { MovingText } from './MovingText'
+import { NavigationProp, useNavigation } from '@react-navigation/native'
+import { ReduceMotion } from 'react-native-reanimated'
 
 export const FloatingPlayer = ({ style }: ViewProps) => {
-	const router = useRouter()
+	const navigation = useNavigation<NavigationProp<any>>()
 
 	const activeTrack = useActiveTrack()
 	const lastActiveTrack = useLastActiveTrack()
@@ -17,7 +18,8 @@ export const FloatingPlayer = ({ style }: ViewProps) => {
 	const displayedTrack = activeTrack ?? lastActiveTrack
 	
 	const handlePress = () => {
-		router.navigate('/player');
+		navigation.navigate('Player');
+		// router.push({ pathname: '(modals)/addToPlaylist', params: { trackUrl: track.url } });
 		console.log('hiii');
 	}
 

@@ -1,5 +1,5 @@
-import { colors } from '@/constants/tokens'
-import { useNavigation } from 'expo-router'
+import { useNavigation } from '@react-navigation/native'
+import { colors } from '../constants/tokens'
 import { useLayoutEffect, useState } from 'react'
 import { SearchBarProps } from 'react-native-screens'
 
