@@ -5,7 +5,7 @@ import { screenPadding } from '../../constants/tokens'
 import { TracksList } from '../../components/TracksList'
 import { generateTracksListId } from '../../helpers/miscellaneous'
 import { useNavigationSearch } from '../../hooks/useNavigationSearch'
-// import { useTracks } from '../../store/library'
+import { useTracks } from '../../store/library'
 import DATA1 from '../../../assets/data/library.json'
 import { trackTitleFilter } from '../../helpers/filter'
 
@@ -33,19 +33,19 @@ const Page = () => {
 	})
 	
 
-	// const tracks = useTracks()
+	const tracks = useTracks()
 
-	// const filteredTracks = useMemo(() => {
-	// 	if (!search) return tracks
+	const filteredTracks = useMemo(() => {
+		if (!search) return tracks
 
-	// 	return tracks.filter(trackTitleFilter(search))
-	// }, [search, tracks])
+		return tracks.filter(trackTitleFilter(search))
+	}, [search, tracks])
 	return (
 		<View style={defaultStyles.container}>
-			<Text style={[defaultStyles.text, { fontWeight: 900 }]}>Songs</Text>
+			{/* <Text style={[defaultStyles.text , styles.header, { fontWeight: 900 }]}>Songs</Text> */}
 			<ScrollView
 				contentInsetAdjustmentBehavior="automatic"
-				style={{ paddingHorizontal: screenPadding.horizontal, height: '60%', marginTop: '20%' }}
+				style={{ paddingHorizontal: screenPadding.horizontal, height: '60%', marginTop: '15%' }}
 			>
 				{/* <FlatList
 					data={DATA1}
@@ -54,7 +54,7 @@ const Page = () => {
 				/> */}
 				<TracksList
 					id={generateTracksListId('songs', search)}
-					tracks={DATA1}
+					tracks={filteredTracks}
 					scrollEnabled={false}
 				/>
 			</ScrollView>
@@ -78,5 +78,12 @@ const styles = StyleSheet.create({
 	title: {
 	  fontSize: 32,
 	  color : '#FFFFFF'
+	},
+	header:{
+		position : 'relative',
+		top : 40,
+        left : 46,
+        fontSize : 32,
+        fontWeight : 'bold'
 	},
   });
