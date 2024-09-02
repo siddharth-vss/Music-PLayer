@@ -29,6 +29,7 @@ import { colors, fontSize } from './src/app/constants/tokens';
 import Player from './src/app/screens/Player';
 import { FloatingPlayer } from './src/app/components/FloatingPlayer';
 import TrackPlayer from 'react-native-track-player';
+import DATA from './src/assets/data/library.json';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const Tab = createBottomTabNavigator();
@@ -40,16 +41,7 @@ function App(): React.JSX.Element {
   useEffect(() => {
     async function setup() {
       await TrackPlayer.setupPlayer();
-      await TrackPlayer.add([{
-        id: 1,
-        url: 'https://audio.jukehost.co.uk/QYX00qYT6PljL6KYyzKGzYPmc3Mhx6gm',
-        title: 'Mood feat iann dior - 24kGoldn',
-        artist: 'Artist 1',
-        artwork: 'https://i.scdn.co/image/ab67616d00001e0284c53fa832dfa265192419c5',
-        // album: 'Album 1',
-        // duration: 3600000, // 3600 seconds = 1 hour
-      }])
-      // await TrackPlayer.play();
+      await TrackPlayer.add(DATA);
     }
     setup();
   }, [])
