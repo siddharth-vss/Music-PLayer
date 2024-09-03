@@ -14,7 +14,7 @@ export type TracksListProps = Partial<FlatListProps<Track>> & {
 	hideQueueControls?: boolean
 }
 
-const ItemDivider = () => (
+export const ItemDivider = () => (
 	<View style={{ ...utilsStyles.itemSeparator, marginVertical: 9, marginLeft: 60 }} />
 )
 
