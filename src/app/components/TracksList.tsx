@@ -1,5 +1,5 @@
 import { TracksListItem } from './TracksListItem'
-import { unknownTrackImageUri } from '../constants/images'
+// import { unknownTrackImageUri } from '../constants/images'
 import { useQueue } from '../store/queue'
 import { utilsStyles } from '../styles'
 import { useRef } from 'react'
@@ -77,7 +77,7 @@ export const TracksList = ({
 					<Text style={utilsStyles.emptyContentText}>No songs found</Text>
 
 					<FastImage
-						source={{ uri: unknownTrackImageUri, priority: FastImage.priority.normal }}
+						source={{ uri: 'https://res.cloudinary.com/dabh5hsuk/image/upload/v1725367459/unknown_track_lrnfi8.png', priority: FastImage.priority.normal }}
 						style={utilsStyles.emptyContentImage}
 					/>
 				</View>

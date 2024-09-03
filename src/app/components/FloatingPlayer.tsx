@@ -1,5 +1,5 @@
 import { PlayPauseButton, SkipToNextButton } from '../components/PlayerControls'
-import { unknownTrackImageUri } from '../constants/images'
+// import { unknownTrackImageUri } from '../constants/images'
 import { useLastActiveTrack } from '../hooks/useLastActiveTrack'
 import { defaultStyles } from '../styles'
 import { StyleSheet, TouchableOpacity, View, ViewProps } from 'react-native'
@@ -30,7 +30,7 @@ export const FloatingPlayer = ({ style }: ViewProps) => {
 			<>
 				<FastImage
 					source={{
-						uri: displayedTrack.artwork ?? unknownTrackImageUri,
+						uri: displayedTrack.artwork ?? 'https://res.cloudinary.com/dabh5hsuk/image/upload/v1725367459/unknown_track_lrnfi8.png',
 					}}
 					style={styles.trackArtworkImage}
 				/>

@@ -1,5 +1,5 @@
 import { PlaylistListItem } from '../components/PlaylistListItem'
-import { unknownTrackImageUri } from '../constants/images'
+// import { unknownTrackImageUri } from '../constants/images'
 import { playlistNameFilter } from '../helpers/filter'
 import { Playlist } from '../helpers/types'
 import { useNavigationSearch } from '../hooks/useNavigationSearch'
@@ -42,7 +42,7 @@ export const PlaylistsList = ({
 					<Text style={utilsStyles.emptyContentText}>No playlist found</Text>
 
 					<FastImage
-						source={{ uri: unknownTrackImageUri, priority: FastImage.priority.normal }}
+						source={{ uri: 'https://res.cloudinary.com/dabh5hsuk/image/upload/v1725367459/unknown_track_lrnfi8.png', priority: FastImage.priority.normal }}
 						style={utilsStyles.emptyContentImage}
 					/>
 				</View>

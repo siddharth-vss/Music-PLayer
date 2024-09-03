@@ -1,5 +1,5 @@
 import library from '../../assets/data/library.json'
-import { unknownTrackImageUri } from '../constants/images'
+// import { unknownTrackImageUri } from '../constants/images'
 import { Artist, Playlist, TrackWithPlaylist } from '../helpers/types'
 import { Track } from 'react-native-track-player'
 import { create } from 'zustand'
@@ -82,7 +82,7 @@ export const usePlaylists = () => {
 					acc.push({
 						name: playlistName,
 						tracks: [track],
-						artworkPreview: track.artwork ?? unknownTrackImageUri,
+						artworkPreview: track.artwork ?? 'https://res.cloudinary.com/dabh5hsuk/image/upload/v1725367459/unknown_track_lrnfi8.png',
 					})
 				}
 			})

@@ -7,7 +7,7 @@ import { artistNameFilter } from '../../helpers/filter'
 import { colors, screenPadding } from '../../constants/tokens'
 import { ItemDivider } from '../../components/TracksList'
 import FastImage from 'react-native-fast-image'
-import { unknownArtistImageUri } from '../../constants/images'
+// import { unknownArtistImageUri } from '../../constants/images'
 import {  NavigationProp, useNavigation } from '@react-navigation/native'
 import { TouchableOpacity } from 'react-native'
 
@@ -44,7 +44,7 @@ const Page = ({navigation }: {navigation : NavigationProp<any>}) => {
                         <View>
                             <Text style={utilsStyles.emptyContentText}>No artist found</Text>
                             <FastImage
-                                source={{ uri: unknownArtistImageUri, priority: FastImage.priority.normal }}
+                                source={{ uri: 'https://res.cloudinary.com/dabh5hsuk/image/upload/v1725365097/unknown_artist_wlofav.jpg', priority: FastImage.priority.normal }}
                                 style={utilsStyles.emptyContentImage}
                             />
                         </View>
@@ -62,7 +62,7 @@ const Page = ({navigation }: {navigation : NavigationProp<any>}) => {
                                     <View>
                                         <FastImage
                                             source={{
-                                                uri: unknownArtistImageUri,
+                                                uri: 'https://res.cloudinary.com/dabh5hsuk/image/upload/v1725365097/unknown_artist_wlofav.jpg',
                                                 priority: FastImage.priority.high,
                                             }}
                                             style={styles.artistImage}

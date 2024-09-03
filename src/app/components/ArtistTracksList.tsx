@@ -1,4 +1,4 @@
-import { unknownArtistImageUri } from '../constants/images'
+// import { unknownArtistImageUri } from '../constants/images'
 import { fontSize } from '../constants/tokens'
 import { trackTitleFilter } from '../helpers/filter'
 import { generateTracksListId } from '../helpers/miscellaneous'
@@ -35,7 +35,7 @@ export const ArtistTracksList = ({ artist }: { artist: Artist }) => {
 					<View style={styles.artworkImageContainer}>
 						<FastImage
 							source={{
-								uri: unknownArtistImageUri,
+								uri: 'https://res.cloudinary.com/dabh5hsuk/image/upload/v1725365097/unknown_artist_wlofav.jpg',
 								priority: FastImage.priority.high,
 							}}
 							style={styles.artistImage}

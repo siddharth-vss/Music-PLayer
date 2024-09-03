@@ -1,6 +1,6 @@
 import { TrackShortcutsMenu } from '../components/TrackShortcutsMenu'
 import { StopPropagation } from '../components/utils/StopPropagation'
-import { unknownTrackImageUri } from '../constants/images'
+// import { unknownTrackImageUri } from '../constants/images'
 import { colors, fontSize } from '../constants/tokens'
 import { defaultStyles } from '../styles'
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -29,7 +29,7 @@ export const TracksListItem = ({
 				<View>
 					<FastImage
 						source={{
-							uri: track.artwork ?? unknownTrackImageUri,
+							uri: track.artwork ?? 'https://res.cloudinary.com/dabh5hsuk/image/upload/v1725367459/unknown_track_lrnfi8.png',
 							priority: FastImage.priority.normal,
 						}}
 						style={{
